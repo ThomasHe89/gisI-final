@@ -39,8 +39,8 @@ $("#yearSelect2 :input").change(function() {
   //reset info window every time user selects new year
   //(otherwise the old number will still be up)
   //these are basically additional info.update functions
-  document.getElementsByClassName("info2")[0].innerHTML = '<h4>Asylum applications in 20'+ selectedYear.substr(3,4) + '</h4>' + 'Hover over a state';
-  document.getElementsByClassName("info3")[0].innerHTML = '<h4>Asylum applications in 20'+ selectedYear.substr(3,4) + '</h4>' + 'Hover over a state';
+  document.getElementsByClassName("info2")[0].innerHTML = '<h4>Applicants in 20'+ selectedYear.substr(3,4) + ' (abs.)</h4>' + 'Hover over a state';
+  document.getElementsByClassName("info3")[0].innerHTML = '<h4>Applicants in 20'+ selectedYear.substr(3,4) + ' (rel.)</h4>' + 'Hover over a state';
   //for each map, iterate over each layer (polygon) in the geojson, 
   //call setStyle() on each, pass in 2nd argument with 
   //whatever property the user selected
@@ -125,7 +125,7 @@ info2.onAdd = function(map) {
 
 info2.update = function(properties) {
   console.log(selectedYear);
-  this._div.innerHTML = '<h4>Asylum applications in 20'+ selectedYear.substr(3,4) + '</h4>' +  (properties ?
+  this._div.innerHTML = '<h4>Applicants in 20'+ selectedYear.substr(3,4) + ' (abs.)</h4>' +  (properties ?
     '<b>' + properties.SOVEREIGNT + '</b><br />' + properties[selectedYear]
     : 'Hover over a state');
 };
@@ -155,7 +155,7 @@ function reset2(e) {
   console.log(e.target);
   e.target.setStyle(style2(e.target.feature));
   // sneak in a second info2.update() function
-  document.getElementsByClassName("info2")[0].innerHTML = '<h4>Asylum applications in 20'+ selectedYear.substr(3,4) + '</h4>' + 'Hover over a state';
+  document.getElementsByClassName("info2")[0].innerHTML = '<h4>Applicants in 20'+ selectedYear.substr(3,4) + ' (abs.)</h4>' + 'Hover over a state';
 }
 
 //this is executed once for each feature in the data, and adds listeners
@@ -252,7 +252,7 @@ info3.onAdd = function(map) {
 };
 
 info3.update = function(properties) {
-  this._div.innerHTML = '<h4>Asylum applications in 20'+ selectedYear2.substr(3,4) + '</h4>' +  (properties ?
+  this._div.innerHTML = '<h4>Applicants in 20'+ selectedYear2.substr(3,4) + ' (rel.)</h4>' +  (properties ?
     '<b>' + properties.SOVEREIGNT + '</b><br />' + (properties[selectedYear2]*100).toFixed(2) + '%'
     : 'Hover over a state');
 };
@@ -282,7 +282,7 @@ function mouseover3(e) {
 //this runs on mouseout
 function reset3(e) {
   e.target.setStyle(style3(e.target.feature));
-  document.getElementsByClassName("info3")[0].innerHTML = '<h4>Asylum applications in 20'+ selectedYear.substr(3,4) + '</h4>' + 'Hover over a state';
+  document.getElementsByClassName("info3")[0].innerHTML = '<h4>Applicants in 20'+ selectedYear.substr(3,4) + ' (rel.)</h4>' + 'Hover over a state';
 }
 
 //this is executed once for each feature in the data, and adds listeners
