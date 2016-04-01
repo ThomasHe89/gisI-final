@@ -73,3 +73,12 @@ body, html {
   margin-right: 8px;
   opacity: 0.7;
 }
+
+#footnote {
+  margin-left: 165px;
+  margin-right: 165px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  color: black;
+  font-size: 12pt;
+}

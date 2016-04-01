@@ -43,8 +43,8 @@
 
     <div class="jumbotron">
         <h2>Fact 1</h2>
-        <p><b>Germany</b> is often considered the country that is accepting the <b>largest share of migrants</b> in Europe.<br/> But is this really true? Let's look at the <b>absolute</b> and <b>relative figures</b> of <b>asylum applicants</b> (where 'relative' means in relation to total population).</p> 
-        <p>This map is based on <a href="http://ec.europa.eu/eurostat/data/database" target="_blank">Eurostat</a> data from 2008-2015. Simply use the buttons below the map to select a year.</p> 
+        <p><b>Germany</b> is often considered the country that is accepting the <b>largest share of migrants</b> in Europe.<br/> But is this really true? Let's look at the <b>absolute</b> and <b>relative figures</b> of <b>asylum applicants</b> (where 'relative' means 'in relation to total population').</p> 
+        <p>This map is based on <a href="http://ec.europa.eu/eurostat/data/database" target="_blank">Eurostat</a> data from 2008-2015.<sup><a href='#fn1' id='ref1'>1</a></sup> Simply use the buttons below the map to select a year.</p> 
     </div>
  
     <div class="row">
@@ -69,7 +69,8 @@
         </div>
       </div>
     </div>
-<!--
+<!-- instead of dropdown, I am using the buttons (cf. above) -->
+<!-- 
     <div class="dropdown">
       <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Select Year
       <span class="caret"></span></button>
@@ -84,13 +85,11 @@
         <li><a href="#" id="act2008">2008</a></li>
       </ul>
     </div>
-
-      <p id="res"></p>
 -->
     <div class="jumbotron">
         <h2>Fact 2</h2>
         <p><a href='http://www.zeit.de' target="_blank">Die ZEIT</a>, one of Germany's most important newspapers, has recently published an <b>impressive article on anti-immigrant violence</b> in Germany (<a href='http://www.zeit.de/politik/deutschland/2015-11/rechtsextremismus-fluechtlingsunterkuenfte-gewalt-gegen-fluechtlinge-justiz-taeter-urteile#gewaltgegenflchtlingsunterknfte-4' target="_blank">ger</a>, <a href='http://www.zeit.de/politik/deutschland/2015-11/anti-immigrant-violence-germany' target="_blank">eng</a>). The authors found out that there have been <b>222 attacks on refugee hostels</b> between Januar and November 2015. As of November 30, <b>charges</b> had been filed in <b>only 8 cases</b>.</p>
-        <p>Using their <a href='https://docs.google.com/spreadsheets/d/1yxi3oV96kxag_3GiVnGvndgJ5zTI-lHsaAB-p7U-g3w/edit#gid=1734573181' target="_blank">data set</a>, I replicate the <b>most important results</b> here.</p> 
+        <p>Using their <a href='https://docs.google.com/spreadsheets/d/1yxi3oV96kxag_3GiVnGvndgJ5zTI-lHsaAB-p7U-g3w/edit#gid=1734573181' target="_blank">data set</a>, I replicate the <b>most important results</b> here.<sup><a href='#fn2' id='ref2'>2</a></sup></p> 
     </div>
     <div class="row">
       <div id="pieChart" class="col-md-6">
@@ -99,7 +98,11 @@
       </div>
     </div>
   </div> <!-- /.container -->
-
+  <div id ='footnote'>
+   <hr>
+    <sup id='fn1'>1. Mapping was done using the open-source JavaScript library <a href="http://leafletjs.com" target="blank">Leaflet</a>. Check out this <a href="http://leafletjs.com/examples/choropleth.html" target="_blank">example</a> for how to build a simple Leaflet choropleth map. I also had help from the NYC-based webmapper <a href="http://chriswhong.com/" target="_blank">Chris Whong</a>. <a href='#ref1' title='Jump back to footnote 1 in the text.'>↩</a></sup><br>
+    <sup id='fn2'>2. The pie charts were created in <a href="http://d3pie.org/" target="_blankd">d3pie</a>, which is built on the open-source JavaScript library <a href="https://d3js.org/" target="blank">D3.js</a>.<a href='#ref2' title='Jump back to footnote 2 in the text.'>↩</a></sup>
+  </div>
   <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
   <script src ="https://code.jquery.com/jquery-2.2.1.js"></script>
   

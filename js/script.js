@@ -14,11 +14,11 @@ var attribution = '&copy; <a href="http://www.openstreetmap.org/copyright">OpenS
 
 // this object is empty, but when we call getJSON(), we'll set it to the result
 var globalData;
-// assigning "abs15" saves us the if statement further down below 
+// assigning "abs15" saves us the if statement further down below (same with "rel15" for the map3)
 var selectedYear = "abs15"; 
 var selectedYear2 = "rel15";
 
-//listen for clicks on the dropdown
+//listen for clicks on the dropdown (deactivated)
 /*
 $("ul.dropdown-menu li a").click(function(e) {
   selectedYear = e.target.id;
@@ -32,13 +32,15 @@ $("ul.dropdown-menu li a").click(function(e) {
   infoHelper(selectedYear);
 });
 */
+
+//instead: listen for buttons (with effects for both maps)
 $("#yearSelect2 :input").change(function() {
     console.log(this.id); // points to the clicked input button
     selectedYear = this.id;
     selectedYear2 = "rel" + selectedYear.substr(3,4)
   //reset info window every time user selects new year
   //(otherwise the old number will still be up)
-  //these are basically additional info.update functions
+  //these are basically additional info.update functions for each map's info section
   document.getElementsByClassName("info2")[0].innerHTML = '<h4>Applicants in 20'+ selectedYear.substr(3,4) + ' (abs.)</h4>' + 'Hover over a state';
   document.getElementsByClassName("info3")[0].innerHTML = '<h4>Applicants in 20'+ selectedYear.substr(3,4) + ' (rel.)</h4>' + 'Hover over a state';
   //for each map, iterate over each layer (polygon) in the geojson, 
@@ -58,8 +60,9 @@ $("#yearSelect2 :input").change(function() {
 // Map 2                                                             //
 ///////////////////////////////////////////////////////////////////////
 
+//scrollWheelZoom deactivated (also for other map below)
 var map2 = L.map('map2', {
-  scrollWheelZoom: true
+  scrollWheelZoom: false
 }).setView( [55.924586,9.228516], 3);
 
 //clean background
@@ -85,7 +88,7 @@ function brewer2(d) {
 
 //added a 2nd argument to style() so we can get different fill colors depending on which property we are styling
 function style2(featureData) {
-  // //not necessary because of initial assignment
+  // //not necessary because of initial assignment (cf. top)
   // //first time it runs, use 'abs15'
   // if (!selectedYear) {
   //   selectedYear = "abs15";
@@ -101,6 +104,8 @@ function style2(featureData) {
   };
 }
 
+//infoHelper functions return selectedYear -> available in global scope
+//e.g. user clicks on 2014 -> selectedYear = "abs14" (for map2) and selectedYear2 = "rel14" (for map3)
 function infoHelper(selectedYear) {
   // //not necessary because of initial assignment
   // //first time it runs, use 'abs15'
@@ -123,6 +128,7 @@ info2.onAdd = function(map) {
   return this._div;
 };
 
+//update on mouseover
 info2.update = function(properties) {
   console.log(selectedYear);
   this._div.innerHTML = '<h4>Applicants in 20'+ selectedYear.substr(3,4) + ' (abs.)</h4>' +  (properties ?
@@ -154,7 +160,8 @@ function mouseover2(e) {
 function reset2(e) {
   console.log(e.target);
   e.target.setStyle(style2(e.target.feature));
-  // sneak in a second info2.update() function
+  // sneak in a second info2.update() function 
+  //(done this way because I can't write to info.update functions)
   document.getElementsByClassName("info2")[0].innerHTML = '<h4>Applicants in 20'+ selectedYear.substr(3,4) + ' (abs.)</h4>' + 'Hover over a state';
 }
 
@@ -205,7 +212,7 @@ legend2.addTo(map2);
 ///////////////////////////////////////////////////////////////////////
 
 var map3 = L.map('map3', {
-  scrollWheelZoom: true
+  scrollWheelZoom: false
 }).setView( [55.924586,9.228516], 3);
 
 //clean background
